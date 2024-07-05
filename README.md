@@ -40,24 +40,27 @@ During the Game Development Bootcamp with Playback Studio, we were tasked with m
 ### Bloqi - Text-Based Social Media App
 [Publication](https://www.mdpi.com/1424-8220/22/11/4240)
 
-Figma/Flutter/Dart: UI development of a social platform bringing a Twitter-like experience to the TikTok generation in university.
+Figma/Flutter/Dart: UI development of a social platform bringing a Twitter-like experience to the TikTok generation in university. Designed the UI within Figma, to be simple and easy to use. The goal was to be as minimalistic as
+possible without losing function. I then integrated the UI into a working version of the app using Flutter/Dart with BloC state-management, while stil maintaining the look and feel of the UI/UX and easy navigation with swipe and 
+drag gestures.
 
 ### 3D Simple Shooter Game
 [Publication](https://www.mdpi.com/1424-8220/22/11/4240)
 
-The clip above shows a short shooter game where the objective is to kill all the enemies. Developing this game helped me better understand shooting mechanics, AI characters, player and character movement and animation. At first, I had difficulty using the animation event graph (pictured above) and making the animations sync with the movement and behave the way I wanted, but after some experimenting and research I fixed it and now it runs smoothly. Below is the C++ "ShooterCharacter" class I used for movement, damage to health and aiming.
+The clip above shows a short shooter game where the objective is to kill all the enemies. Developing this game helped me better understand shooting mechanics, AI characters, player and character movement and animation. Using the 
+animation event graph and syncing animation to character movement proved to be challenging, however after experimentation and reseach I am much more comfortable using these functions of Unreal Engine. Below is the C++ "ShooterCharacter" class I used for movement, damage to health and aiming.
 
 ### First Person Puzzle Game
 [Publication](https://www.mdpi.com/1424-8220/22/11/4240)
 
-I created this game to improve my skills using modular level design. Using the asset pack I designed a dungeon and crypt where the objective of the game is to venture into the dungeon and retreive a valuable statue. During the process of making this game I learnt how to use line tracing and collisions as well as debug tools such as a debug sphere(as seen in the video above). I came across an issue where the item grabbed and dropped into the secret wall wouldnt trigger the wall to move down. I solved this by turning off physics to that particular item when it enters a certain area and "sticks" to the bottom surface. Below is the code for the "Grabber" component, where I used tags for when an item is grabbed and debug lines and spheres to see when something is picked up and released and to show the grabbable distance.
+I created this game to improve my skills using modular level design. Using the asset pack I designed a dungeon and crypt where the objective of the game is to venture into the dungeon and retrieve a valuable statue. During the process of making this game I became competent in use line traces and collisions as well as debug tools such as a debug sphere (as seen in the video above). Such tools improved my debugging and problem-solving skills. I came across an issue where the item grabbed and dropped into the secret wall wouldnt trigger the wall to move down. I solved this by turning off physics to that particular item when it enters a certain area and "sticks" to the bottom surface. I found that even simple issues like this were satisfying to solve and maintained my excitement to make more games. Below is the script for the "Grabber" component, where I used tags for when an item is grabbed and debug lines and spheres to see when something is picked up and released and to show the grabbable distance.
 
 ### 3D Third Person Obstacle Course Game
 [Publication](https://www.mdpi.com/1424-8220/22/11/4240)
 
-Here I learnt the basics of developing a game using blueprints and C++. I practiced functions, variables, branches in C++ and creating C++ Actors. I also, learnt how to link Blueprint to C++. Other than that I had a lot of fun designing an obstacle course for my character in this game. Below is the code for a moving platform.
+Near the beginning of my game development journey I learnt the basics of developing a game using blueprints and C++. I practiced functions, variables, branches in C++ and creating C++ Actors. I also, learnt how to link Blueprint to C++. I thoroughly enjoyed the level design aspect of this game which was designing the obstacle course for my character. Below is the script for a moving platform.
 
 ### 3D Tank Shooter Game
 [Publication](https://www.mdpi.com/1424-8220/22/11/4240)
 
-In this game, you control a small toon-like tank and move around like a tank would to try and shoot turrets, once all the turrets are destroyed you win the game, however the turrents lock onto you and shoot back when you come within range. While developing this game I learnt how to use a "fire" functionality with projectiles, add special effects like smoke, explosions and SFX and add enemy AI controlled turrets to the game. With various issues I encountered while making this game, one of them was the projectile getting stuck on the actor when clicking to fire. I found that it is common practice to spawn projectiles with a bit of distance from the actor so they do not get stuck. I find that experiencing and learning these kind of things helps me become a better game developer. Below is the code for a projectile.
+In this game, you control a small toon-like tank and move around with tank-like movement to shoot turrets, once all the turrets are destroyed you win the game, however the turrents lock onto you and shoot back when you come within range. While developing this game I learnt how to use a "fire" functionality with projectiles, add special effects like smoke, explosions and SFX and add enemy AI controlled turrets to the game. With various issues I encountered while making this game, one of them was the projectile getting stuck on the actor when clicking to fire. I found that it is common practice to spawn projectiles with a bit of distance from the actor so they do not collide with the actor and get stuck. I find that experiencing and learning these kind of things helps me become a better game developer. Below is the script for a projectile.

@@ -29,7 +29,7 @@ While working as gameplay programmer at Nerd Monkeys I worked on several project
 
 
 
-![So Cold Barn](/assets/img/SoColdBarnThumbnail.png)
+![So Cold Barn](/assets/img/SoColdBarn.png)
 
 ### 2D Side-Scrolling Platform Game
 

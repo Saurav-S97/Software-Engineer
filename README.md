@@ -1,6 +1,6 @@
 # Software-Engineer
 
-#### Technical Skills: Python, SQL, AWS, Snowflake, MATLAB
+#### Technical Skills: C++, C#, HTML, CSS, Javascript, Flutter/Dart, Unreal Engine, Unity
 
 ## Education
 - Game Development Bootcamp | Playback Studio (_2023_)								       		
@@ -47,20 +47,19 @@ drag gestures.
 ### 3D Simple Shooter Game
 [Publication](https://www.mdpi.com/1424-8220/22/11/4240)
 
-The clip above shows a short shooter game where the objective is to kill all the enemies. Developing this game helped me better understand shooting mechanics, AI characters, player and character movement and animation. Using the 
-animation event graph and syncing animation to character movement proved to be challenging, however after experimentation and reseach I am much more comfortable using these functions of Unreal Engine. Below is the C++ "ShooterCharacter" class I used for movement, damage to health and aiming.
+This is a short shooter game where the objective is to kill all the enemies. Developing this game helped me better understand shooting mechanics, AI characters, player and character movement and animation. Syncing animations to character movement and physics in the C++ code proved to be challenging, however after experimentation and research I am much more comfortable with physics and mathematics related functions in C++ as well as the animation tools in Unreal Engine. Below is the C++ "ShooterCharacter" class I used for movement, damage to health and aiming.
 
 ### First Person Puzzle Game
 [Publication](https://www.mdpi.com/1424-8220/22/11/4240)
 
-I created this game to improve my skills using modular level design. Using the asset pack I designed a dungeon and crypt where the objective of the game is to venture into the dungeon and retrieve a valuable statue. During the process of making this game I became competent in use line traces and collisions as well as debug tools such as a debug sphere (as seen in the video above). Such tools improved my debugging and problem-solving skills. I came across an issue where the item grabbed and dropped into the secret wall wouldnt trigger the wall to move down. I solved this by turning off physics to that particular item when it enters a certain area and "sticks" to the bottom surface. I found that even simple issues like this were satisfying to solve and maintained my excitement to make more games. Below is the script for the "Grabber" component, where I used tags for when an item is grabbed and debug lines and spheres to see when something is picked up and released and to show the grabbable distance.
+I created this game to improve my skills using modular level design. Using an asset pack, I designed a dungeon and crypt where the objective of the game is to venture into the dungeon and retrieve a valuable statue. During the process of making this game I became competent in use line traces and collisions as well as debug tools such as a debug sphere. Such tools improved my debugging and problem-solving skills. For example, I came across an issue where my player wound not pick up an item, using common debugging practice as well as engine specific debugging tools I was able to solve this problem by extending the "MaxGrabDistance". I found that even simple issues like this were satisfying to solve and maintained my excitement for programming. Below is the script for the "Grabber" component, where I used tags for when an item is grabbed and debug lines and spheres to see when something is picked up and released and to show the grabbable distance.
 
 ### 3D Third Person Obstacle Course Game
 [Publication](https://www.mdpi.com/1424-8220/22/11/4240)
 
-Near the beginning of my game development journey I learnt the basics of developing a game using blueprints and C++. I practiced functions, variables, branches in C++ and creating C++ Actors. I also, learnt how to link Blueprint to C++. I thoroughly enjoyed the level design aspect of this game which was designing the obstacle course for my character. Below is the script for a moving platform.
+Near the beginning of my game programming journey I learnt the basics of developing a game using blueprints and C++. I practiced functions, variables, branches in C++ and creating C++ Actors. I also, learnt how to link Blueprint to C++. I thoroughly enjoyed the level design aspect of this game which was designing the obstacle course for my character. Below is the script for a moving platform.
 
 ### 3D Tank Shooter Game
 [Publication](https://www.mdpi.com/1424-8220/22/11/4240)
 
-In this game, you control a small toon-like tank and move around with tank-like movement to shoot turrets, once all the turrets are destroyed you win the game, however the turrents lock onto you and shoot back when you come within range. While developing this game I learnt how to use a "fire" functionality with projectiles, add special effects like smoke, explosions and SFX and add enemy AI controlled turrets to the game. With various issues I encountered while making this game, one of them was the projectile getting stuck on the actor when clicking to fire. I found that it is common practice to spawn projectiles with a bit of distance from the actor so they do not collide with the actor and get stuck. I find that experiencing and learning these kind of things helps me become a better game developer. Below is the script for a projectile.
+In this game, you control a small tank and move around to shoot turrets, once all the turrets are destroyed you win the game, however the turrents lock onto you and shoot back when you come within range. While developing this game I learnt how to use a "fire" functionality with projectiles, add special effects like smoke, explosions and SFX and add enemy AI controlled turrets to the game. The projectile class has an "OnHit" function that takes into account the various variables/classes such as: a "HitComp", actor location in space, a vector variable, a damage class and many more to make it work correctly. Taking all these into account made making this feature complicated, but greatly improved my learning by sticking through it and solving issues as they arose. I believe: the more complex, the greater the challenge, the greater the learning potential. This is what makes a better developer. Below is the script for a projectile.

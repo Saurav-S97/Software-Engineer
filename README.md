@@ -31,7 +31,7 @@ While working as gameplay programmer at Nerd Monkeys I worked on several project
 
 ### 2D Side-Scrolling Platform Game
 
-![Demon Cat](/assets/img/DemonCat.png)
+<img src="DemonCat.png" width="200" height="100">
 
 During the Game Development Bootcamp with Playback Studio, we were tasked with making our own complete game. Through trial and error and researching specific features I wanted for my game, I became very comfortable with Unity and C# and I believe this method of learning was much more valuable than doing a course or traditional learning. Such features I explored in this game were: AI enemies, cliff detection, player attack detection, parallax background, particle system, health and damage for characters, player movement, character animations and rigging characters. Below is the C# code for my "damageable" script, which enables my player and enemies to take damage to their health when hit.
 

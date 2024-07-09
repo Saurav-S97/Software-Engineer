@@ -31,13 +31,13 @@ While working as gameplay programmer at Nerd Monkeys I worked on several project
 
 ### 2D Side-Scrolling Platform Game
 
-<img src="DemonCat.png" width="200" height="100">
+![Demon Cat](/assets/img/DemonCat.png)
 
 During the Game Development Bootcamp with Playback Studio, we were tasked with making our own complete game. Through trial and error and researching specific features I wanted for my game, I became very comfortable with Unity and C# and I believe this method of learning was much more valuable than doing a course or traditional learning. Such features I explored in this game were: AI enemies, cliff detection, player attack detection, parallax background, particle system, health and damage for characters, player movement, character animations and rigging characters. Below is the C# code for my "damageable" script, which enables my player and enemies to take damage to their health when hit.
 
 ### Bloqi - Text-Based Social Media App
 
-![Bloqi Demo](/assets/img/BloqiDemo.png)
+<img src="/assets/img/BloqiDemo.png" width="200" height="100">
 
 Figma/Flutter/Dart: UI development of a social platform bringing a Twitter-like experience to the TikTok generation in university. Designed the UI within Figma, to be simple and easy to use. The goal was to be as minimalistic as
 possible without losing function. I then integrated the UI into a working version of the app using Flutter/Dart with BloC state-management, while stil maintaining the look and feel of the UI/UX and easy navigation with swipe and 

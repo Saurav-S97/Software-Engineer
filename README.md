@@ -30,56 +30,56 @@
 While working as gameplay programmer at Nerd Monkeys I worked on several projects, one being So Cold Barn. During this time I was introduced to many gameplay programming concepts such as how C# events give more control and allow multiple functions to be called from different scripts. I was also able to improve my teamwork skills and brainstorm with other programmers (some more experienced than me) how we can turn requested features into fruition, mainly via scripting. Along the way, I improved my debugging skills within code and game engine integration. This required a deep understanding of the scripts (including ones I did not work on previously) in order to find the issue and implement a solution. I enjoyed the creativity from working on gameplay features as well finding creative solutions to bugs. Below is a script I made to spawn a number of consumables (pills, in this case) into a level based on the previous level's completion percentage.
 
 '''
-                    public class FloorPillActivation : MonoBehaviour
-                    {
-                        [SerializeField] private GameState _gameState;
-                        [SerializeField] private GameInfo _gameInfo;
+public class FloorPillActivation : MonoBehaviour
+{
+    [SerializeField] private GameState _gameState;
+    [SerializeField] private GameInfo _gameInfo;
 
-                        void Start()
-                        {
-                        
-                            ActivatePillsBasedOnCompletion();
-                        }
+    void Start()
+    {
+    
+        ActivatePillsBasedOnCompletion();
+    }
 
-                        private void ActivatePillsBasedOnCompletion()
-                        {
-                            GameObject [] allPills = GameObject.FindGameObjectsWithTag("Pill");
-                            Debug.Log("Total pills: " + allPills.Length);
-                            foreach(GameObject pill in allPills)
-                            {
-                                pill.SetActive(false);
-                            }
+    private void ActivatePillsBasedOnCompletion()
+    {
+        GameObject [] allPills = GameObject.FindGameObjectsWithTag("Pill");
+        Debug.Log("Total pills: " + allPills.Length);
+        foreach(GameObject pill in allPills)
+        {
+            pill.SetActive(false);
+        }
 
-                            int currentLevelIndex = _gameInfo.CurrentLevel - 1;
-                            float previousLevelCompletion = _gameState.FloorCompletionPercentages[currentLevelIndex - 1];
-                            
-                            float targetPercentage = previousLevelCompletion / 100f;
-                            Debug.Log("Target percentage: " + targetPercentage);
-                            
+        int currentLevelIndex = _gameInfo.CurrentLevel - 1;
+        float previousLevelCompletion = _gameState.FloorCompletionPercentages[currentLevelIndex - 1];
+        
+        float targetPercentage = previousLevelCompletion / 100f;
+        Debug.Log("Target percentage: " + targetPercentage);
+        
 
-                            int numPillsToActivate = Mathf.RoundToInt(targetPercentage * allPills.Length); 
+        int numPillsToActivate = Mathf.RoundToInt(targetPercentage * allPills.Length); 
 
-                            if (numPillsToActivate > allPills.Length) 
-                            {
-                                numPillsToActivate = allPills.Length;
-                            }
+        if (numPillsToActivate > allPills.Length) 
+        {
+            numPillsToActivate = allPills.Length;
+        }
 
-                            List activatedPillIndices = new List(); 
+        List activatedPillIndices = new List(); 
 
-                            while (activatedPillIndices.Count < numPillsToActivate)
-                            {
-                                int randomIndex = Random.Range(0, allPills.Length);
-                                if (!activatedPillIndices.Contains(randomIndex)) 
-                                {
-                                    activatedPillIndices.Add(randomIndex);
-                                    allPills[randomIndex].SetActive(true);
-                                    Debug.Log("Selected index: " + randomIndex + ", Activated pills: " + activatedPillIndices.Count);
-                                }
+        while (activatedPillIndices.Count < numPillsToActivate)
+        {
+            int randomIndex = Random.Range(0, allPills.Length);
+            if (!activatedPillIndices.Contains(randomIndex)) 
+            {
+                activatedPillIndices.Add(randomIndex);
+                allPills[randomIndex].SetActive(true);
+                Debug.Log("Selected index: " + randomIndex + ", Activated pills: " + activatedPillIndices.Count);
+            }
 
-                            }
-                        }
-                    }
-                    '''
+        }
+    }
+}
+'''
 
 ### 2D Side-Scrolling Platform Game
 

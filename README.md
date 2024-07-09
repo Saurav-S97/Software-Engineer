@@ -37,7 +37,7 @@ During the Game Development Bootcamp with Playback Studio, we were tasked with m
 
 ### Bloqi - Text-Based Social Media App
 
-![Bloqi Demo](/assets/img/BloqiDemo.png)
+![Bloqi Demo](/assets/img/BloqiDemo30.png)
 
 Figma/Flutter/Dart: UI development of a social platform bringing a Twitter-like experience to the TikTok generation in university. Designed the UI within Figma, to be simple and easy to use. The goal was to be as minimalistic as
 possible without losing function. I then integrated the UI into a working version of the app using Flutter/Dart with BloC state-management, while stil maintaining the look and feel of the UI/UX and easy navigation with swipe and 

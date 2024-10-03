@@ -1,6 +1,6 @@
 # Software Engineer
 
-#### Technical Skills: C++, C#, HTML, CSS, Javascript, Flutter/Dart, Unreal Engine, Unity
+#### Technical Skills: C++, C#, Python, HTML, CSS, Javascript, Flutter/Dart, Unreal Engine, Unity
 
 ## Education
 - Game Development Bootcamp | Playback Studio (_2023_)								       		
@@ -15,7 +15,7 @@
 - Tested and improved gameplay features.
 - Improved teamwork ability by brainstorming with others how to implement game design ideas into code/gameplay mechanics.
 
-**Founder/Developer/Designer • Bloqi (_February 2023 - Present_)**
+**Founder/Developer/Designer • Bloqi (_February 2023 - March 2024_)**
 - Social platform bringing a Twitter-like experience to the TikTok generation in university.
 - Managed the product development process from design to beta testing, showcasing strong team spirit and project management skills.
 - Designed the UI using Figma. Developed first version of app in Flutter in less than a month.

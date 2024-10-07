@@ -26,9 +26,87 @@
 
 ### GPT-2 Clone (124M)
 
-![So Cold Barn](/assets/img/SoColdBarn.png)
+Through my own interest and online resources, I recreated OpenAI's GPT-2 on a smaller scale. During this process, I learnt all the accompaning components that make up a neural network and a Large Language Model, such as calculating token weights, logits, loss and gradients during a backwards pass and adjusting the weights to achieve a better loss. I also learnt about different types of optimisation techniques to save on time and space, such as the various weight decay methods as well as forcing calculations on 1 kernel using flash attention. Overall, I believe my practical approach to learning has made me much more confident working with neural networks and understanding how AI works on a deep level. Here is a section of code containing the training loop, validation loss calculation and printing sample text including a prefix:
 
-Through my own interest and online resources, I recreated OpenAI's GPT-2 on a smaller scale. During this process, I learnt all the accompaning components that make up a neural network and a Large Language Model, such as calculating token weights, logits, loss and gradients during a backwards pass and adjusting the weights to achieve a better loss. I also learnt about different types of optimisation techniques to save on time and space, such as the various weight decay methods as well as forcing calculations on 1 kernel using flash attention. Overall, I believe my practical approach to learning has made me much more confident working with neural networks and understanding how AI works on a deep level.
+    for step in range(max_steps):
+        t0 = time.time()
+    
+        #once in a while evaluate out validation loss
+        if step % 100 == 0:
+            model.eval()
+            val_loader.reset()
+            with torch.no_grad():
+                val_loss_accum = 0.0
+                val_loss_steps = 20
+                for _ in range(val_loss_steps):
+                    x, y = val_loader.next_batch()
+                    x, y = x.to(device), y.to(device)
+                    with torch.autocast(device_type=device, dtype=torch.bfloat16):
+                        logits, loss = model(x, y)
+                    loss = loss / val_loss_steps
+                    val_loss_accum += loss.detach()
+            if ddp:
+                dist.all_reduce(val_loss_accum, op=dist.ReduceOp.AVG)
+            if master_process:
+                print(f"validation loss: {val_loss_accum.item():.4f}")
+        
+        if step > 0 and step % 100 == 0:
+            model.eval()
+            num_return_sequences = 4
+            max_length = 32
+            tokens = enc.encode("Hello, I'm a language model,")
+            tokens = torch.tensor(tokens, dtype=torch.long)
+            tokens = tokens.unsqueeze(0).repeat(num_return_sequences, 1)
+            xgen = tokens.to(device)
+            sample_rng = torch.Generator(device=device)
+            sample_rng.manual_seed(42 + ddp_rank)
+            while xgen.size(1) < max_length:
+                # forward the model to get the logits
+                with torch.no_grad():
+                    logits, loss = model(xgen)
+                    # take the logits at the last position
+                    logits = logits[:, -1, :]
+                    # get the probabilities
+                    probs = F.softmax(logits, dim=1)
+                    topk_probs, topk_indices = torch.topk(probs, 50, dim=1)
+                    ix = torch.multinomial(topk_probs, 1, generator=sample_rng)
+                    xcol = torchxcol = torch.gather(topk_indices, -1, ix)
+                    xgen = torch.cat((x, xcol), dim=1)
+    
+            # print generated text
+            for i in range(num_return_sequences):
+                tokens = xgen[i, :max_length].tolist()
+                decoded = enc.decode(tokens)
+                print(f"rank {ddp_rank} sample {i}: {decoded}")
+        
+        # training loop
+        model.train()
+        optimizer.zero_grad()
+        loss_accum = 0.0
+        for micro_step in range(grad_accum_steps):
+            x, y = train_loader.next_batch()
+            x, y = x.to(device), y.to(device)
+            with torch.autocast(device_type=device, dtype=torch.bfloat16):
+                logits, loss = model(x, y)
+            loss = loss / grad_accum_steps
+            loss_accum += loss.detach()
+            if ddp:
+                model.require_backward_grad_sync = (micro_step == grad_accum_steps - 1)
+            loss.backward()
+        if ddp:
+            dist.all_reduce(loss_accum, op=dist.ReduceOp.AVG)
+        norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        lr = get_lr(step)
+        for param_group in optimizer.param_groups:
+            param_group['lr'] = lr
+        optimizer.step()
+        torch.cuda.synchronize() # wait for gpu to finish work
+        t1 = time.time()
+        dt = (t1 - t0)*1000 # time diff in miliseconds
+        tokens_processed = train_loader.B * train_loader.T * grad_accum_steps * ddp_world_size
+        tokens_per_sec = (train_loader.B * train_loader.T) / (t1 - t0)
+        if master_process:
+            print(f"step {step:4d} | loss: {loss_accum.item():.6f} | lr {lr:.4e} | norm: {norm:.4f} | dt: {dt*1000:.2f}ms | tok/sec: {tokens_per_sec:.2f}")
 
 ### 2D Box-Pushing Puzzle Game
 

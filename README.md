@@ -24,11 +24,11 @@
 
 ## Projects
 
-### GPT-2 clone (124M)
+### GPT-2 Clone (124M)
 
 ![So Cold Barn](/assets/img/SoColdBarn.png)
 
-Through my own interest and online resources, I recreated GPT-2 on a smaller scale. During this process, I learnt all the accompaning components that make up a neural network and a Large Language Model, such as calculating token weights, logits, loss and gradients during a backwards pass and adjusting the weights to achieve a better loss. I also learnt about different types of optimisation techniques to save on time and space, such as the various weight decay methods as well as forcing calculations on 1 kernel using flash attention. Overall, I believe my practical approach to learning has made me much more confident working with neural networks and understanding how AI works on a deep level.
+Through my own interest and online resources, I recreated OpenAI's GPT-2 on a smaller scale. During this process, I learnt all the accompaning components that make up a neural network and a Large Language Model, such as calculating token weights, logits, loss and gradients during a backwards pass and adjusting the weights to achieve a better loss. I also learnt about different types of optimisation techniques to save on time and space, such as the various weight decay methods as well as forcing calculations on 1 kernel using flash attention. Overall, I believe my practical approach to learning has made me much more confident working with neural networks and understanding how AI works on a deep level.
 
 ### 2D Box-Pushing Puzzle Game
 
